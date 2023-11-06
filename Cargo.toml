@@ -6,8 +6,31 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-axum = { version = "0.6.20", features = ["form", "macros", "multipart", "headers"] }
-log = "0.4.20"
+axum = { version = "0.6.20", features = [
+    "form",
+    "macros",
+    "multipart",
+    "headers",
+] }
+dotenvy = "0.15.7"
+hyper = { version = "0.14.27", features = ["full"] }
+nftables = "0.2.4"
 tokio = { version = "1.33.0", features = ["full"] }
-tower = "0.4.13"
-tower-http = "0.4.4"
+tower = { version = "0.4.13", features = [
+    "limit",
+    "buffer",
+    "tokio",
+    "timeout",
+    "load-shed",
+] }
+tower-http = { version = "0.4.4", features = ["cors", "fs", "tokio"] }
+tracing = "0.1.40"
+tracing-subscriber = { version = "0.3.17", features = ["env-filter"] }
+
+[profile.release]
+debug = 0
+lto = "fat"
+opt-level = 3
+codegen-units = 1
+split-debuginfo = "off"
+#panic = "abort"
