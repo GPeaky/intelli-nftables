@@ -15,6 +15,8 @@ axum = { version = "0.6.20", features = [
 dotenvy = "0.15.7"
 hyper = { version = "0.14.27", features = ["full"] }
 nftables = "0.2.4"
+rustc-hash = "1.1.0"
+serde = { version = "1.0.190", features = ["derive"] }
 tokio = { version = "1.33.0", features = ["full"] }
 tower = { version = "0.4.13", features = [
     "limit",

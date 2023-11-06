@@ -3,8 +3,13 @@ use dotenvy::{dotenv, var};
 use std::net::TcpListener;
 
 mod config;
-mod routes;
+mod dtos;
+mod error;
 mod handlers;
+mod response;
+mod routes;
+mod services;
+mod states;
 
 #[tokio::main]
 async fn main() {
@@ -15,7 +20,7 @@ async fn main() {
 
     Server::from_tcp(incoming)
         .unwrap()
-        .serve(routes::service_routes().await)
+        .serve(routes::service_routes())
         .await
         .unwrap();
 }
